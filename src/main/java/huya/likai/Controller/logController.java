@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.text.ParseException;
 
 @RestController
 public class logController {
@@ -22,13 +21,13 @@ public class logController {
     @Autowired
     private statisticsService statisticsService;
 
-    @RequestMapping(value = "readFile",method = RequestMethod.POST)
+    @RequestMapping(value = "readFile")
     public Page read(@RequestParam MultipartFile file){
         return readFileService.readToString(file);
 
     }
 
-    @RequestMapping(value = "readFile/{page}",method = RequestMethod.POST)
+    @RequestMapping(value = "readFile/{page}")
     public Page page(@PathVariable("page") int page){
         pageHelper pageHelper = new pageHelper();
         Page<log> logPage = pageHelper.page(page,20,common.logResponses.getLogList().size());
@@ -36,8 +35,8 @@ public class logController {
         return logPage;
     }
 
-    @RequestMapping(value = "sort",method = RequestMethod.POST)
-    public statisticsResponses read() throws ParseException {
+    @RequestMapping(value = "sort")
+    public statisticsResponses read() throws Exception {
         return statisticsService.statistics();
     }
 

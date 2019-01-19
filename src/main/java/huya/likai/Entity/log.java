@@ -1,6 +1,5 @@
 package huya.likai.Entity;
 
-import java.util.Date;
 
 public class log {
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class logResponses {
 
-    private List<log> logList;
+    public List<log> logList;
 
     public List<log> getLogList() {
         return logList;

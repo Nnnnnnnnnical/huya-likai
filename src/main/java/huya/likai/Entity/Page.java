@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Page<T> {
-    //已知数据
     private int pageNum;    //当前页,从请求那边传过来。
     private int pageSize;    //每页显示的数据条数。
     private int totalRecord;    //总的记录条数。查询数据库得到的数据
@@ -23,7 +22,7 @@ public class Page<T> {
         this.pageSize = pageSize;
         this.totalRecord = totalRecord;
     }
-    //get、set方法。
+
     public int getPageNum() {
         return pageNum;
     }
@@ -70,7 +69,7 @@ public class Page<T> {
 
     public void setList(List<T> list) {
         List<T> temp = new ArrayList<>();
-        for(int i = this.startIndex;i<this.startIndex+20;i++){
+        for(int i = this.startIndex;i<this.startIndex+20 && i<totalRecord;i++){
             temp.add(list.get(i));
         }
         this.list = temp;

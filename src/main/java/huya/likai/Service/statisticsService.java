@@ -3,8 +3,10 @@ package huya.likai.Service;
 import huya.likai.Common.common;
 import huya.likai.Entity.code;
 import huya.likai.Entity.log;
+import huya.likai.Exception.MyException;
 import huya.likai.Param.statisticsResponses;
 import huya.likai.Entity.time;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -14,7 +16,14 @@ import java.util.Date;
 @Service
 public class statisticsService {
 
-    public statisticsResponses statistics() throws ParseException {
+    @Autowired
+    private MyException myException;
+
+    public statisticsResponses statistics() throws Exception {
+
+        if(common.logResponses.getLogList().size()==0){
+            myException.noData();
+        }
 
         statisticsResponses statisticsResponses = new statisticsResponses();
         code code = new code();

@@ -5,8 +5,8 @@ import huya.likai.Entity.time;
 
 public class statisticsResponses {
 
-    private code code;
-    private time time;
+    public code code;
+    public time time;
 
     public statisticsResponses() {
     }
